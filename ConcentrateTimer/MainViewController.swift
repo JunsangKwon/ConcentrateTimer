@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
+        setLongPressGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +35,43 @@ class MainViewController: UIViewController {
     func setNavigationBar() {
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
+    
+    func setLongPressGesture() {
+        let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+            longPressedGesture.minimumPressDuration = 0.5
+            longPressedGesture.delegate = self
+            longPressedGesture.delaysTouchesBegan = true
+            collectionView?.addGestureRecognizer(longPressedGesture)
+    }
+    
+    func showAlert(message: String, position: CGPoint) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
+        
+        let actionCancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let actionDelete = UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
+            
+            if let indexPath = self.collectionView?.indexPathForItem(at: position) {
+                self.appDelegate.goalList.remove(at: indexPath.item)
+                self.collectionView.reloadData()
+            }
+        })
+        alert.addAction(actionDelete)
+        alert.addAction(actionCancel)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        if (gestureRecognizer.state != .began) {
+            return
+        }
+        let p = gestureRecognizer.location(in: self.collectionView)
+
+        showAlert(message: "목표를 삭제 하시겠습니까?", position: p)
+    }
+
+    
 
 }
 
