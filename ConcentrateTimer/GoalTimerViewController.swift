@@ -17,13 +17,18 @@ class GoalTimerViewController: UIViewController {
         setPlayStopButton()
         setNotifications()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        GoalTimerViewController.count = 0
+        timer.invalidate()
+    }
 
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var progressBarView: UIProgressView!
     @IBOutlet weak var playStopButton: UIButton!
     
     @IBAction func dismissButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.showAlert(message: "정말 종료하시겠습니까? 시간은 저장되지 않습니다.", type: "select")
     }
     
     var goalData: GoalData?
@@ -73,8 +78,7 @@ class GoalTimerViewController: UIViewController {
             let actionNo = UIAlertAction(title: "아니요", style: .default, handler: nil)
             
             let actionYes = UIAlertAction(title: "예", style: .default, handler: { _ in
-                self.dismiss(animated: true, completion: nil)
-
+                self.navigationController?.popViewController(animated: true)
             })
             alert.addAction(actionYes)
             alert.addAction(actionNo)
