@@ -123,11 +123,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4lc-Y3-kw9">
-                                <rect key="frame" x="70" y="327" width="274" height="4"/>
+                                <rect key="frame" x="70" y="327" width="274" height="16"/>
                                 <color key="tintColor" red="0.50421607489999998" green="0.79572671650000004" blue="0.62285637859999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="hrQ-yq-1Y6"/>
+                                </constraints>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ns8-gV-pj4">
-                                <rect key="frame" x="192" y="389" width="30" height="30"/>
+                                <rect key="frame" x="157" y="443" width="100" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="aAH-dI-dQb"/>
+                                    <constraint firstAttribute="width" constant="100" id="tuQ-Rn-hv4"/>
+                                </constraints>
                                 <state key="normal" title="시작"/>
                                 <connections>
                                     <action selector="playStopButtonDidTap:" destination="gnm-52-Zty" eventType="touchUpInside" id="OU7-7V-T5g"/>
@@ -141,7 +148,7 @@
                             <constraint firstItem="4lc-Y3-kw9" firstAttribute="leading" secondItem="Zgu-2r-cLV" secondAttribute="leading" constant="70" id="3eI-JB-LQ7"/>
                             <constraint firstItem="XoO-ke-wYf" firstAttribute="top" secondItem="Zgu-2r-cLV" secondAttribute="top" constant="200" id="OyD-6k-lDE"/>
                             <constraint firstItem="ns8-gV-pj4" firstAttribute="centerX" secondItem="Zgu-2r-cLV" secondAttribute="centerX" id="cfQ-WH-mFO"/>
-                            <constraint firstItem="ns8-gV-pj4" firstAttribute="top" secondItem="4lc-Y3-kw9" secondAttribute="bottom" constant="58" id="mH0-8h-j1c"/>
+                            <constraint firstItem="ns8-gV-pj4" firstAttribute="top" secondItem="4lc-Y3-kw9" secondAttribute="bottom" constant="100" id="mH0-8h-j1c"/>
                             <constraint firstItem="4lc-Y3-kw9" firstAttribute="top" secondItem="XoO-ke-wYf" secondAttribute="bottom" constant="55" id="rIk-tV-hmd"/>
                             <constraint firstItem="Zgu-2r-cLV" firstAttribute="trailing" secondItem="4lc-Y3-kw9" secondAttribute="trailing" constant="70" id="u2K-Aq-D1P"/>
                             <constraint firstItem="4lc-Y3-kw9" firstAttribute="centerX" secondItem="Zgu-2r-cLV" secondAttribute="centerX" id="vkk-rz-Boj"/>

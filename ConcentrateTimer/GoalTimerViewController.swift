@@ -11,8 +11,10 @@ class GoalTimerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setProgressView()
         setTimerLabel()
         setNavigationBar()
+        setPlayStopButton()
     }
 
     @IBOutlet weak var timerLabel: UILabel!
@@ -26,7 +28,10 @@ class GoalTimerViewController: UIViewController {
     var goalData: GoalData?
     var timer: Timer = Timer()
     var timerCounting: Bool = false
+    var isFinish: Bool = false
     var count = 0
+    var totalSecond = 0
+    var progress = 0
     
     func setTimerLabel() {
         if let time = goalData?.goalTime {
@@ -35,10 +40,26 @@ class GoalTimerViewController: UIViewController {
         }
     }
     
+    func setProgressView() {
+        progressBarView.layer.cornerRadius = 8
+        progressBarView.clipsToBounds = true
+        progressBarView.layer.sublayers![1].cornerRadius = 8
+        progressBarView.subviews[1].clipsToBounds = true
+        progressBarView.progress = 0.0
+    }
+    
+    func setPlayStopButton() {
+        playStopButton.setTitleColor(.white, for: .normal)
+        playStopButton.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0x80CB9F), for: .normal)
+        playStopButton.clipsToBounds = true
+        playStopButton.layer.cornerRadius = 8
+    }
+    
     func calculateHourAndMiniute(time: String) {
         let hourAndMinute = time.split(separator: ":")
         count += Int(hourAndMinute[0])! * 3600
         count += Int(hourAndMinute[1])! * 60
+        totalSecond = count
     }
     
     func setNavigationBar() {
@@ -50,7 +71,9 @@ class GoalTimerViewController: UIViewController {
     }
     
     @IBAction func playStopButtonDidTap(_ sender: Any) {
-        if timerCounting {
+        if isFinish {
+            self.navigationController?.popViewController(animated: true)
+        } else if timerCounting {
             timerCounting = false
             timer.invalidate()
             playStopButton.setTitle("계속", for: .normal)
@@ -63,9 +86,21 @@ class GoalTimerViewController: UIViewController {
     
     @objc func timerCounter() -> Void {
         count = count - 1
+        progress += 1
         let time = secondsToHoursMinutesSeconds(seconds: count)
         let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
         timerLabel.text = timeString
+        if count != 0 {
+            DispatchQueue.main.async {
+                self.progressBarView.setProgress(Float(self.progress) / Float(self.totalSecond), animated: true)
+            }
+        } else {
+            timer.invalidate()
+            playStopButton.setTitle("종료", for: .normal)
+            isFinish = true
+        }
+        
+        
     }
     
     func secondsToHoursMinutesSeconds(seconds: Int) -> (Int, Int, Int) {

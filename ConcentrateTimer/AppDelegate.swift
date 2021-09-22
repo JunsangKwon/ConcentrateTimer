@@ -10,7 +10,7 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var goalList: [GoalData] = [GoalData(goalName: "안녕", goalTime: "01:00")]
+    var goalList: [GoalData] = [GoalData(goalName: "안녕", goalTime: "00:01")]
 
 
 
