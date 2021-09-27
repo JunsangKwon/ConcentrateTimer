@@ -1,20 +1,19 @@
 //
-//  MakeGoalViewController.swift
+//  EditGoalViewController.swift
 //  ConcentrateTimer
 //
-//  Created by 권준상 on 2021/09/15.
+//  Created by 권준상 on 2021/09/27.
 //
 
 import UIKit
 
-class MakeGoalViewController: UIViewController {
+class EditGoalViewController: UIViewController {
 
-    @IBOutlet weak var goalNameTextField: UITextField!
+    @IBOutlet weak var editGoalNameTextField: UITextField!
+    @IBOutlet weak var editGoalTimeTextField: UITextField!
+    @IBOutlet weak var editConfirmButton: UIButton!
     
-    @IBOutlet weak var goalTimeTextField: UITextField!
-    
-    @IBOutlet weak var confirmButton: UIButton!
-    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var isGoalSetted: Bool = false
     
     let goalTimeTextFieldToolBar: UIToolbar = {
@@ -25,10 +24,12 @@ class MakeGoalViewController: UIViewController {
     }()
     
     private var timePicker: UIDatePicker?
+    static var index: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
+        setValue()
         setTimePicker()
         registerToolbar()
         setButton()
@@ -40,7 +41,14 @@ class MakeGoalViewController: UIViewController {
     
     @IBAction func dismissButton(_ sender: Any) {
         if !isGoalSetted {
-            self.showAlert(message: "목표 만들기를 취소하시겠습니까?", type: "choice")
+            self.showAlert(message: "목표 수정하기를 취소하시겠습니까?", type: "choice")
+        }
+    }
+    
+    func setValue() {
+        if let index = EditGoalViewController.index {
+            editGoalNameTextField.text = appDelegate.goalList[index].goalName
+            editGoalTimeTextField.text = appDelegate.goalList[index].goalTime
         }
     }
     
@@ -51,16 +59,16 @@ class MakeGoalViewController: UIViewController {
     func setTimePicker() {
         timePicker = UIDatePicker()
         timePicker?.datePickerMode = .countDownTimer
-        goalTimeTextField.inputView = timePicker
+        editGoalTimeTextField.inputView = timePicker
         timePicker?.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
     }
     
     func setButton() {
-        confirmButton.setTitleColor(.white, for: .normal)
-        confirmButton.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0x80CB9F), for: .normal)
-        confirmButton.clipsToBounds = true
-        confirmButton.layer.cornerRadius = 8
-        confirmButton.addTarget(self, action: #selector(saveGoal), for: .touchUpInside)
+        editConfirmButton.setTitleColor(.white, for: .normal)
+        editConfirmButton.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0x80CB9F), for: .normal)
+        editConfirmButton.clipsToBounds = true
+        editConfirmButton.layer.cornerRadius = 8
+        editConfirmButton.addTarget(self, action: #selector(saveGoal), for: .touchUpInside)
     }
     
     func registerToolbar() {
@@ -70,7 +78,7 @@ class MakeGoalViewController: UIViewController {
 
         goalTimeTextFieldToolBar.setItems([ flexibleSpace, doneButton], animated: false)
         goalTimeTextFieldToolBar.isUserInteractionEnabled = true
-        goalTimeTextField.inputAccessoryView = goalTimeTextFieldToolBar
+        editGoalTimeTextField.inputAccessoryView = goalTimeTextFieldToolBar
     }
     
     func showAlert(message: String, type: String) {
@@ -99,34 +107,39 @@ class MakeGoalViewController: UIViewController {
         dateFormatter.dateFormat = "HH:mm"
         if let timepicker = timePicker {
             if dateFormatter.string(from: timepicker.date) == "00:00" {
-                goalTimeTextField.text = "00:01"
+                editGoalTimeTextField.text = "00:01"
             } else {
-                goalTimeTextField.text = dateFormatter.string(from: timepicker.date)
+                editGoalTimeTextField.text = dateFormatter.string(from: timepicker.date)
             }
         }
     }
     
     @objc func doneButtonDidTap() {
         dateChanged()
-        goalTimeTextField.resignFirstResponder()
+        editGoalTimeTextField.resignFirstResponder()
     }
     
     @objc func saveGoal() {
-        guard self.goalNameTextField.text?.isEmpty == false else {
+        guard self.editGoalNameTextField.text?.isEmpty == false else {
             self.showAlert(message: "목표의 이름을 설정해주세요", type: "confirm")
             return
         }
         
-        guard self.goalTimeTextField.text?.isEmpty == false else {
+        guard self.editGoalTimeTextField.text?.isEmpty == false else {
             self.showAlert(message: "집중 시간을 설정해주세요", type: "confirm")
             return
         }
         
-        let data = GoalData(goalName: self.goalNameTextField.text!, goalTime: self.goalTimeTextField.text!)
+        guard EditGoalViewController.index != nil else {
+            return
+        }
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.goalList.append(data)
+        let data = GoalData(goalName: self.editGoalNameTextField.text!, goalTime: self.editGoalTimeTextField.text!)
+        
+        appDelegate.goalList.remove(at: EditGoalViewController.index!)
+        appDelegate.goalList.insert(data, at: EditGoalViewController.index!)
         isGoalSetted = true
+        EditGoalViewController.index = nil
         
         self.dismiss(animated: true, completion: nil)
     }

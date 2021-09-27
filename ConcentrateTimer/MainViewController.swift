@@ -71,6 +71,9 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
         showAlert(message: "목표를 삭제 하시겠습니까?", position: p)
     }
 
+    @objc func editButtonDidTap(sender: UIButton) {
+        EditGoalViewController.index = sender.tag
+    }
     
 
 }
@@ -93,6 +96,9 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         let row = self.appDelegate.goalList[indexPath.item]
         cell.goalNameLabel.text = row.goalName
+        
+        cell.editButton.tag = indexPath.item
+        cell.editButton.addTarget(self, action: #selector(editButtonDidTap), for: .touchUpInside)
         
         return cell
     }

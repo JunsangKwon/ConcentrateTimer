@@ -43,18 +43,22 @@
                                                             <color key="textColor" systemColor="tertiarySystemBackgroundColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nMY-Ba-Hy2">
-                                                            <rect key="frame" x="300" y="25.5" width="20" height="19"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceu-a4-8lM">
+                                                            <rect key="frame" x="302" y="25" width="20" height="20"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </imageView>
+                                                            <state key="normal" image="pencil.circle.fill" catalog="system"/>
+                                                            <connections>
+                                                                <segue destination="dvy-Mk-8qQ" kind="presentation" modalPresentationStyle="fullScreen" id="pDm-nN-6gd"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.50421607489999998" green="0.79572671650000004" blue="0.62285637859999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstItem="mnN-2G-rDE" firstAttribute="centerY" secondItem="xfH-uP-q4a" secondAttribute="centerY" id="1sp-kY-Ub1"/>
-                                                        <constraint firstAttribute="trailing" secondItem="nMY-Ba-Hy2" secondAttribute="trailing" constant="30" id="B46-gu-H0R"/>
-                                                        <constraint firstItem="nMY-Ba-Hy2" firstAttribute="centerY" secondItem="xfH-uP-q4a" secondAttribute="centerY" id="JY2-54-R24"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ceu-a4-8lM" secondAttribute="trailing" constant="28" id="BYK-YO-ugo"/>
                                                         <constraint firstItem="mnN-2G-rDE" firstAttribute="leading" secondItem="xfH-uP-q4a" secondAttribute="leading" constant="20" id="rPG-FI-2Fy"/>
+                                                        <constraint firstItem="ceu-a4-8lM" firstAttribute="centerY" secondItem="xfH-uP-q4a" secondAttribute="centerY" id="t51-LJ-7Fg"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -72,6 +76,7 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="350" height="70"/>
                                         <connections>
+                                            <outlet property="editButton" destination="ceu-a4-8lM" id="n4R-3W-FpT"/>
                                             <outlet property="goalNameLabel" destination="mnN-2G-rDE" id="p87-QP-dWe"/>
                                         </connections>
                                     </collectionViewCell>
@@ -170,7 +175,110 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ehY-L0-Cmz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2221.739130434783" y="443.97321428571428"/>
+            <point key="canvasLocation" x="2222" y="796"/>
+        </scene>
+        <!--목표 수정하기-->
+        <scene sceneID="OlL-62-3VV">
+            <objects>
+                <viewController id="W5g-ez-m3A" customClass="EditGoalViewController" customModule="ConcentrateTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B6U-lk-JNf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목표의 이름을 설정하세요" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIY-Ot-Njf">
+                                <rect key="frame" x="20" y="124" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="목표 이름 입력" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TUm-bi-fNl">
+                                <rect key="frame" x="20" y="160.5" width="374" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="M5M-IX-Rxv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-ny-ec0">
+                                <rect key="frame" x="20" y="213.5" width="374" height="0.5"/>
+                                <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.40000000000000002" id="0Py-yt-2h2"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="집중 시간을 설정하세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjf-FM-68u">
+                                <rect key="frame" x="20" y="250" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="목표 시간 설정" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p0q-O9-2oG">
+                                <rect key="frame" x="20" y="287" width="374" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="26v-bQ-Dwg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifD-9X-nv3">
+                                <rect key="frame" x="20" y="340" width="374" height="0.5"/>
+                                <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.40000000000000002" id="p6a-4A-B4H"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTw-bp-tYn">
+                                <rect key="frame" x="157" y="388.5" width="100" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="hoA-oZ-lZL"/>
+                                    <constraint firstAttribute="height" constant="36" id="i70-uG-RR1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="완료"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="K6i-Cc-opK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="K6i-Cc-opK" firstAttribute="trailing" secondItem="TUm-bi-fNl" secondAttribute="trailing" constant="20" id="17a-7v-gq6"/>
+                            <constraint firstItem="TUm-bi-fNl" firstAttribute="top" secondItem="TIY-Ot-Njf" secondAttribute="bottom" constant="16" id="1Bd-z4-cLI"/>
+                            <constraint firstItem="K6i-Cc-opK" firstAttribute="trailing" secondItem="XdT-ny-ec0" secondAttribute="trailing" constant="20" id="CgR-4w-Qvf"/>
+                            <constraint firstItem="ifD-9X-nv3" firstAttribute="top" secondItem="p0q-O9-2oG" secondAttribute="bottom" constant="5" id="DWp-l4-wTn"/>
+                            <constraint firstItem="TIY-Ot-Njf" firstAttribute="leading" secondItem="K6i-Cc-opK" secondAttribute="leading" constant="20" id="ETs-g8-AQs"/>
+                            <constraint firstItem="K6i-Cc-opK" firstAttribute="trailing" secondItem="pjf-FM-68u" secondAttribute="trailing" constant="20" id="IAN-i9-nN0"/>
+                            <constraint firstItem="TIY-Ot-Njf" firstAttribute="top" secondItem="K6i-Cc-opK" secondAttribute="top" constant="36" id="KzY-VD-zxY"/>
+                            <constraint firstItem="p0q-O9-2oG" firstAttribute="leading" secondItem="K6i-Cc-opK" secondAttribute="leading" constant="20" id="NnE-le-wO7"/>
+                            <constraint firstItem="XdT-ny-ec0" firstAttribute="top" secondItem="TUm-bi-fNl" secondAttribute="bottom" constant="5" id="SkR-e5-JF2"/>
+                            <constraint firstItem="eTw-bp-tYn" firstAttribute="centerX" secondItem="K6i-Cc-opK" secondAttribute="centerX" id="abG-fd-a0z"/>
+                            <constraint firstItem="K6i-Cc-opK" firstAttribute="trailing" secondItem="p0q-O9-2oG" secondAttribute="trailing" constant="20" id="eg3-mV-XZN"/>
+                            <constraint firstItem="K6i-Cc-opK" firstAttribute="trailing" secondItem="TIY-Ot-Njf" secondAttribute="trailing" constant="20" id="fpq-8f-wfI"/>
+                            <constraint firstItem="p0q-O9-2oG" firstAttribute="top" secondItem="pjf-FM-68u" secondAttribute="bottom" constant="16" id="oiR-DP-xxC"/>
+                            <constraint firstItem="eTw-bp-tYn" firstAttribute="top" secondItem="ifD-9X-nv3" secondAttribute="bottom" constant="48" id="oro-wu-40H"/>
+                            <constraint firstItem="pjf-FM-68u" firstAttribute="top" secondItem="XdT-ny-ec0" secondAttribute="bottom" constant="36" id="tqq-sE-r2r"/>
+                            <constraint firstItem="XdT-ny-ec0" firstAttribute="leading" secondItem="K6i-Cc-opK" secondAttribute="leading" constant="20" id="ulW-Ub-Hvl"/>
+                            <constraint firstItem="TUm-bi-fNl" firstAttribute="leading" secondItem="K6i-Cc-opK" secondAttribute="leading" constant="20" id="vZP-GW-hQu"/>
+                            <constraint firstItem="pjf-FM-68u" firstAttribute="leading" secondItem="K6i-Cc-opK" secondAttribute="leading" constant="20" id="vln-f5-AaJ"/>
+                            <constraint firstItem="K6i-Cc-opK" firstAttribute="trailing" secondItem="ifD-9X-nv3" secondAttribute="trailing" constant="20" id="yzp-bH-dJU"/>
+                            <constraint firstItem="ifD-9X-nv3" firstAttribute="leading" secondItem="K6i-Cc-opK" secondAttribute="leading" constant="20" id="zZJ-fp-nYd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="목표 수정하기" id="7hF-Yt-xqZ">
+                        <barButtonItem key="rightBarButtonItem" image="xmark" catalog="system" id="Mpu-ek-b6C">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="dismissButton:" destination="W5g-ez-m3A" id="jwN-cn-GTb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="editConfirmButton" destination="eTw-bp-tYn" id="LnY-wr-Ugv"/>
+                        <outlet property="editGoalNameTextField" destination="TUm-bi-fNl" id="G1f-tr-XC3"/>
+                        <outlet property="editGoalTimeTextField" destination="p0q-O9-2oG" id="mx8-YL-Rxv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f5d-NT-7jv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3110" y="-612"/>
         </scene>
         <!--목표 만들기-->
         <scene sceneID="TZn-dl-6Xd">
@@ -273,7 +381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7R-5G-jDg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3137.68115942029" y="-332.14285714285711"/>
+            <point key="canvasLocation" x="3152" y="63"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yPK-Zz-Rr4">
@@ -316,11 +424,29 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bzd-GO-cjO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2223" y="-332"/>
+            <point key="canvasLocation" x="2222" y="63"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Vf5-pt-Jgr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dvy-Mk-8qQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zgK-lP-rix">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="W5g-ez-m3A" kind="relationship" relationship="rootViewController" id="YUG-KF-4on"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FOg-Ob-ege" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2222" y="-612"/>
         </scene>
     </scenes>
     <resources>
-        <image name="play.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

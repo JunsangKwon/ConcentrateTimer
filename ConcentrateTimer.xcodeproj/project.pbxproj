@@ -19,6 +19,7 @@
 		2D594D1526F32A8400006662 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D594D1426F32A8400006662 /* UIButton+.swift */; };
 		2D594D1826F32AD600006662 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D594D1726F32AD600006662 /* UIColor+.swift */; };
 		2D594D1F26F4D13A00006662 /* GoalTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D594D1E26F4D13A00006662 /* GoalTimerViewController.swift */; };
+		2DDDBCA82700E1E200D7805E /* EditGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDBCA72700E1E200D7805E /* EditGoalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		2D594D1426F32A8400006662 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		2D594D1726F32AD600006662 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		2D594D1E26F4D13A00006662 /* GoalTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTimerViewController.swift; sourceTree = "<group>"; };
+		2DDDBCA72700E1E200D7805E /* EditGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				2D594D0026F24C8A00006662 /* GoalData.swift */,
 				2D594CE726F21EC900006662 /* SceneDelegate.swift */,
 				2D594CE926F21EC900006662 /* MainViewController.swift */,
+				2DDDBCA72700E1E200D7805E /* EditGoalViewController.swift */,
 				2D594CEB26F21EC900006662 /* Main.storyboard */,
 				2D594D1E26F4D13A00006662 /* GoalTimerViewController.swift */,
 				2D594CFC26F227F500006662 /* MakeGoalViewController.swift */,
@@ -164,6 +167,7 @@
 				2D594CE826F21EC900006662 /* SceneDelegate.swift in Sources */,
 				2D594D0126F24C8A00006662 /* GoalData.swift in Sources */,
 				2D594CFD26F227F500006662 /* MakeGoalViewController.swift in Sources */,
+				2DDDBCA82700E1E200D7805E /* EditGoalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

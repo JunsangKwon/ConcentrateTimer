@@ -9,5 +9,7 @@ import UIKit
 
 class GoalCell: UICollectionViewCell {
     @IBOutlet weak var goalNameLabel: UILabel!
+    @IBOutlet weak var editButton: UIButton!
+    
     
 }
