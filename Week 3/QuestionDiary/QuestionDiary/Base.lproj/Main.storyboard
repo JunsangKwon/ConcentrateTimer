@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Gu-Qb-Byb">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--일기-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="QuestionDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DZx-9j-Qt4">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" red="1" green="0.99410895910597219" blue="0.78690171026828837" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="QKT-WQ-Vrb"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="D2r-Un-Yfh"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6P-ui-5pN">
+                                <rect key="frame" x="334" y="712" width="50" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQI-FP-COD">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Txk-sZ-eft"/>
+                                            <constraint firstAttribute="height" constant="50" id="b3X-7R-ANe"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="pencil" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goToWriteDiaryViewController:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2QZ-cS-KN4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="ZQI-FP-COD" firstAttribute="leading" secondItem="H6P-ui-5pN" secondAttribute="leading" id="0rp-XK-sW6"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZQI-FP-COD" secondAttribute="bottom" id="3Pz-aW-kEm"/>
+                                    <constraint firstItem="ZQI-FP-COD" firstAttribute="top" secondItem="H6P-ui-5pN" secondAttribute="top" id="Oct-s4-NcC"/>
+                                    <constraint firstAttribute="width" constant="50" id="al1-Tw-xdc"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZQI-FP-COD" secondAttribute="trailing" id="ipB-qP-S7V"/>
+                                    <constraint firstAttribute="height" constant="50" id="nt1-Y4-CEj"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DZx-9j-Qt4" secondAttribute="trailing" id="9i1-Fs-rEo"/>
+                            <constraint firstItem="DZx-9j-Qt4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Fay-gJ-Ojh"/>
+                            <constraint firstItem="DZx-9j-Qt4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Qml-ti-e2I"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H6P-ui-5pN" secondAttribute="trailing" constant="30" id="T5u-dV-idk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="H6P-ui-5pN" secondAttribute="bottom" constant="100" id="U9U-cv-dTo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DZx-9j-Qt4" secondAttribute="bottom" constant="-34" id="jvz-Uf-oRu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="일기" id="AB8-Uh-4fJ"/>
+                    <connections>
+                        <outlet property="containerView" destination="H6P-ui-5pN" id="ZDY-a9-L8q"/>
+                        <outlet property="tableView" destination="DZx-9j-Qt4" id="3Yz-Im-VsF"/>
+                        <outlet property="writeButton" destination="ZQI-FP-COD" id="lqa-mK-Az8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="886.95652173913049" y="62.946428571428569"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="h8j-44-TTR">
+            <objects>
+                <viewController id="Hgb-DP-XOU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M0F-nC-2BI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="tNj-6S-UMS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BLN-Lq-yaM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2013" y="-330"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JeN-QY-a3B">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Gu-Qb-Byb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lws-Oe-dFZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="mX5-GF-jcP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CqZ-Jw-a9g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23.188405797101453" y="62.946428571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pencil" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
