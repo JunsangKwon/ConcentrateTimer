@@ -8,8 +8,7 @@
 import Foundation
 
 struct DiaryData {
-    var diaryIdx: Int?   // 데이터 식별값
-    var title: String?  // 메모 제목
-    var contents: String?   // 메모 내용
-    var regdate: Date?  // 작성일
+    var title: String  // 메모 제목
+    var contents: String   // 메모 내용
+    var regdate: Date  // 작성일
 }

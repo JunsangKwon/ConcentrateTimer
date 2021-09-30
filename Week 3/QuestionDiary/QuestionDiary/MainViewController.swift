@@ -15,14 +15,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var writeButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     
-    @IBAction func goToWriteDiaryViewController(_ sender: Any) {
-        
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setXibCell()
+        setNavigationBar()
         setButton()
     }
     
@@ -30,9 +25,13 @@ class MainViewController: UIViewController {
         self.tableView.reloadData()
     }
     
-    func setXibCell() {
-        let nibName = UINib(nibName: "MainTableViewCell", bundle: nil)
-        tableView.register(nibName, forCellReuseIdentifier: "MainTableViewCell")
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            let vc = segue.destination as? DetailDiaryViewController
+            if let row = sender as? DiaryData {
+                vc?.diaryData = row
+            }
+        }
     }
     
     func setButton() {
@@ -46,6 +45,10 @@ class MainViewController: UIViewController {
         containerView.layer.shadowOpacity = 0.2
         containerView.layer.shadowColor = UIColor.black.cgColor
     }
+    
+    func setNavigationBar() {
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
 
 }
 
@@ -56,11 +59,23 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as? MainTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DiaryCell", for: indexPath) as? DiaryCell else {
             return UITableViewCell()
         }
+        
+        let row = self.appDelegate.diarylist[indexPath.row]
+        
+        cell.titleLabel.text = row.title
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일 HH:mm"
+        cell.regdateLabel.text = formatter.string(from: row.regdate)
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = self.appDelegate.diarylist[indexPath.row]
+        performSegue(withIdentifier: "showDetail", sender: row)
+    }
 }
