@@ -59,12 +59,10 @@ class MainViewController: UIViewController {
     }
     
     @objc func likeButtonDidTap(sender: UIButton) {
-        if !isSelect {
+        if !sender.isSelected {
             sender.isSelected = true
-            isSelect = true
         } else {
             sender.isSelected = false
-            isSelect = false
         }
     }
 
@@ -102,7 +100,29 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? DiaryCell {
-            appDelegate.isLikeButtonTouched[indexPath.row] = cell.likeButton.isSelected
+            if indexPath.row >= appDelegate.isLikeButtonTouched.count {
+                print(indexPath.row)
+                return
+            } else {
+                appDelegate.isLikeButtonTouched[indexPath.row] = cell.likeButton.isSelected
+                print(cell.likeButton.isSelected)
+                print(indexPath.row)
+                print(appDelegate.isLikeButtonTouched)
+            }
+        }
+    }
+    
+    private func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+       return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.appDelegate.diarylist.remove(at: indexPath.row)
+            self.appDelegate.isLikeButtonTouched.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        } else if editingStyle == .insert {
+            self.tableView.insertRows(at: [indexPath], with: .automatic)
         }
     }
 }
