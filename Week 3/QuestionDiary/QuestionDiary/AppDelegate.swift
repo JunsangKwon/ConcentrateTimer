@@ -11,6 +11,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var diarylist : [DiaryData] = [DiaryData(title: "시험", contents: "테스트", regdate: Date())]
+    var isLikeButtonTouched: [Bool] = []
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

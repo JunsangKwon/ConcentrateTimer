@@ -53,9 +53,6 @@
                                                             <state key="selected" image="heart.fill" catalog="system">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="19"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="likeButtonDidTap:" destination="HZp-Bv-4hX" eventType="touchUpInside" id="ppc-6R-DGc"/>
-                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -347,6 +344,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="일기" id="oDo-jn-Z2N"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QzO-QK-wUb">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

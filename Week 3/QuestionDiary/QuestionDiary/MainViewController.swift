@@ -10,6 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var isSelect = false
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var writeButton: UIButton!
@@ -19,6 +20,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         setButton()
+        initIsLikeButtonTouched()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +51,22 @@ class MainViewController: UIViewController {
     func setNavigationBar() {
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
+    
+    func initIsLikeButtonTouched() {
+        for _ in 0..<appDelegate.diarylist.count {
+            appDelegate.isLikeButtonTouched.append(false)
+        }
+    }
+    
+    @objc func likeButtonDidTap(sender: UIButton) {
+        if !isSelect {
+            sender.isSelected = true
+            isSelect = true
+        } else {
+            sender.isSelected = false
+            isSelect = false
+        }
+    }
 
 }
 
@@ -70,6 +88,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 MM월 dd일 HH:mm"
         cell.regdateLabel.text = formatter.string(from: row.regdate)
+        cell.likeButton.isSelected = appDelegate.isLikeButtonTouched[indexPath.row]
+        
+        cell.likeButton.addTarget(self, action: #selector(likeButtonDidTap), for: .touchUpInside)
         
         return cell
     }
@@ -77,5 +98,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = self.appDelegate.diarylist[indexPath.row]
         performSegue(withIdentifier: "showDetail", sender: row)
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let cell = cell as? DiaryCell {
+            appDelegate.isLikeButtonTouched[indexPath.row] = cell.likeButton.isSelected
+        }
     }
 }

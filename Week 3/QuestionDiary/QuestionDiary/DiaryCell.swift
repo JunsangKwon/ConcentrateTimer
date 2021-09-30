@@ -13,19 +13,14 @@ class DiaryCell: UITableViewCell {
     @IBOutlet weak var regdateLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var cellContainView: UIView!
-    
-    var isSelect = false
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         setContainView()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func setContainView() {
@@ -35,16 +30,5 @@ class DiaryCell: UITableViewCell {
         cellContainView.layer.borderWidth = 2
         cellContainView.layer.cornerRadius = 8
     }
-    
-    @IBAction func likeButtonDidTap(_ sender: Any) {
-        if !isSelect {
-            likeButton.isSelected = true
-            isSelect = true
-        } else {
-            likeButton.isSelected = false
-            isSelect = false
-        }
-    }
-    
     
 }

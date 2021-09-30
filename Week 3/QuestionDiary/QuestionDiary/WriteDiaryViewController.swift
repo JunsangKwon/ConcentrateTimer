@@ -35,6 +35,7 @@ class WriteDiaryViewController: UIViewController {
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.diarylist.append(data)
+        appDelegate.isLikeButtonTouched.append(false)
         
         self.navigationController?.popViewController(animated: true)
     }
