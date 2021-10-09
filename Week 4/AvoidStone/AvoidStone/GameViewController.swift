@@ -52,22 +52,33 @@ class GameViewController: UIViewController {
         }()
         
         self.view.addSubview(rockImageView)
+
+        // MARK: 충돌 판정 (오류 있음)
+        DispatchQueue.global(qos: .userInteractive).async {
+            while true {
+                DispatchQueue.main.async {
+                    if (rockImageView.frame.maxX > self.manImageView.frame.minX) && (rockImageView.frame.minX < self.manImageView.frame.maxX) {
+                        if rockImageView.frame.minY <=
+                            self.manImageView.frame.maxY {
+                            self.scoreTimer.invalidate()
+                            self.rockTimer.invalidate()
+                            self.showAlert()
+                        }
+                    }
+                }
+                usleep(2500000)
+            }
+        }
         
+        // MARK: 돌 내려가는 애니메이션
         UIView.animate(withDuration: 2.5, delay: 0, options: .allowUserInteraction, animations: {
-            rockImageView.center.y = UIScreen.main.bounds.height - 130
+            rockImageView.frame = CGRect(x: rockImageView.frame.minX, y: UIScreen.main.bounds.height - 130, width: 50, height: 50)
         }, completion: { _ in
             rockImageView.removeFromSuperview()
         })
-
     }
     
-//    if (rockImageView.center.x > self.manImageView.center.x - 40) && (rockImageView.center.x < self.manImageView.center.x + 40) {
-//        if rockImageView.center.y < self.manImageView.center.y {
-//            self.scoreTimer.invalidate()
-//            self.rockTimer.invalidate()
-//            self.showAlert()
-//        }
-//    }
+
     
     func goLeft() {
         if self.manConstraints.constant >= 10 {
