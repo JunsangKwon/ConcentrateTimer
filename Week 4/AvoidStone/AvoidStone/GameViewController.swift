@@ -19,6 +19,8 @@ class GameViewController: UIViewController {
     var scoreTimer = Timer()
     var rockTimer = Timer()
     var presentScore = 0
+    var highestScore = UserDefaults.standard.integer(forKey: GameViewController.scoreKey)
+    static let scoreKey = "score"
     
     // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -36,7 +38,9 @@ class GameViewController: UIViewController {
     
     // 게임 시작 전 세팅
     func setView() {
+        print(highestScore)
         presentScoreLabel.text = String(0)
+        greatScoreLabel.text = String(highestScore)
         scoreTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(scoreTimerCounter), userInfo: nil, repeats: true)
         rockTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(rockTimerCounter), userInfo: nil, repeats: true)
     }
@@ -54,21 +58,23 @@ class GameViewController: UIViewController {
         self.view.addSubview(rockImageView)
 
         // MARK: 충돌 판정 (오류 있음)
-        DispatchQueue.global(qos: .userInteractive).async {
-            while true {
-                DispatchQueue.main.async {
-                    if (rockImageView.frame.maxX > self.manImageView.frame.minX) && (rockImageView.frame.minX < self.manImageView.frame.maxX) {
-                        if rockImageView.frame.minY <=
-                            self.manImageView.frame.maxY {
-                            self.scoreTimer.invalidate()
-                            self.rockTimer.invalidate()
-                            self.showAlert()
-                        }
+        DispatchQueue.main.async {
+            if (rockImageView.frame.maxX > self.manImageView.frame.minX) && (rockImageView.frame.minX < self.manImageView.frame.maxX) {
+                if rockImageView.frame.minY <=
+                    self.manImageView.frame.maxY {
+                    self.scoreTimer.invalidate()
+                    self.rockTimer.invalidate()
+                    self.showAlert()
+                    if self.highestScore < self.presentScore {
+                        UserDefaults.standard.setValue(self.presentScore, forKey: GameViewController.scoreKey)
+                        self.highestScore = self.presentScore
                     }
+                    self.greatScoreLabel.text = String(UserDefaults.standard.integer(forKey: GameViewController.scoreKey)) 
+                    self.presentScore = 0
                 }
-                usleep(2500000)
             }
         }
+                
         
         // MARK: 돌 내려가는 애니메이션
         UIView.animate(withDuration: 2.5, delay: 0, options: .allowUserInteraction, animations: {
