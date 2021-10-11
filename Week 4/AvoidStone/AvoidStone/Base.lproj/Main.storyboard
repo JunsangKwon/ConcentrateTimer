@@ -69,8 +69,8 @@
                                     <constraint firstItem="5dg-e6-XJo" firstAttribute="centerY" secondItem="EaW-KR-q1B" secondAttribute="centerY" id="oot-9G-0j3"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkJ-t8-RH5">
-                                <rect key="frame" x="189.5" y="414.5" width="35" height="69.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkJ-t8-RH5">
+                                <rect key="frame" x="188.5" y="418.5" width="37" height="69.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="58"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -82,10 +82,52 @@
                                     <constraint firstAttribute="width" constant="80" id="tSS-6t-oDk"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OBi-cp-CGX">
+                                <rect key="frame" x="87" y="353" width="240" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWo-yg-u7G">
+                                        <rect key="frame" x="62" y="26" width="116.5" height="27.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRu-8j-JDl">
+                                        <rect key="frame" x="105" y="73.5" width="30" height="55"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWj-54-0pi">
+                                        <rect key="frame" x="106.5" y="154" width="27" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="play.circle" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="23"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="pWj-54-0pi" secondAttribute="bottom" constant="20" id="0ci-ox-iqG"/>
+                                    <constraint firstItem="pWj-54-0pi" firstAttribute="centerX" secondItem="OBi-cp-CGX" secondAttribute="centerX" id="1bv-hv-j6s"/>
+                                    <constraint firstItem="DWo-yg-u7G" firstAttribute="top" secondItem="OBi-cp-CGX" secondAttribute="top" constant="26" id="2am-Ze-bQw"/>
+                                    <constraint firstItem="PRu-8j-JDl" firstAttribute="top" secondItem="DWo-yg-u7G" secondAttribute="bottom" constant="20" id="SHp-CU-Unv"/>
+                                    <constraint firstItem="PRu-8j-JDl" firstAttribute="centerX" secondItem="OBi-cp-CGX" secondAttribute="centerX" id="UiP-sC-cvs"/>
+                                    <constraint firstItem="DWo-yg-u7G" firstAttribute="centerX" secondItem="OBi-cp-CGX" secondAttribute="centerX" id="bef-7l-iVD"/>
+                                    <constraint firstAttribute="width" constant="240" id="dHP-fC-DC5"/>
+                                    <constraint firstAttribute="height" constant="200" id="gbh-cV-0Jr"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.65871326883048997" green="0.89220682742926916" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="OBi-cp-CGX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="6eb-21-eY7"/>
                             <constraint firstItem="GkJ-t8-RH5" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Acr-vw-DgA"/>
                             <constraint firstItem="zEd-ev-ixT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Dkb-nu-WOh"/>
                             <constraint firstItem="EaW-KR-q1B" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="34" id="GAQ-Oc-yvG"/>
@@ -97,29 +139,37 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EaW-KR-q1B" secondAttribute="trailing" id="c1C-pf-VRD"/>
                             <constraint firstItem="zEd-ev-ixT" firstAttribute="top" secondItem="Ge7-3Q-z1i" secondAttribute="bottom" constant="5" id="dVT-Vg-mgh"/>
                             <constraint firstItem="EaW-KR-q1B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uMR-hJ-p4H"/>
+                            <constraint firstItem="OBi-cp-CGX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ygE-TX-Wel"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="countDownLabel" destination="GkJ-t8-RH5" id="kbL-ri-2KT"/>
+                        <outlet property="gameOverScoreLabel" destination="PRu-8j-JDl" id="Elt-sy-4OL"/>
+                        <outlet property="gameOverView" destination="OBi-cp-CGX" id="aJy-TM-1Pk"/>
                         <outlet property="goLeftButton" destination="uTF-JQ-EiC" id="ekY-jN-MyZ"/>
                         <outlet property="goRightButton" destination="5dg-e6-XJo" id="XPc-KA-HgT"/>
                         <outlet property="greatScoreLabel" destination="Ge7-3Q-z1i" id="ohy-BB-4Ie"/>
                         <outlet property="manConstraints" destination="Xxx-12-Bpq" id="SJ7-DI-NS8"/>
                         <outlet property="manImageView" destination="nkE-Jq-5F0" id="i4Y-3n-6Ik"/>
                         <outlet property="presentScoreLabel" destination="zEd-ev-ixT" id="Lgp-Cj-kda"/>
+                        <outlet property="restartButton" destination="pWj-54-0pi" id="YHV-gl-LkI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-139" y="50"/>
+            <point key="canvasLocation" x="-139.13043478260872" y="49.553571428571423"/>
         </scene>
     </scenes>
     <resources>
         <image name="chevron.left.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.right.circle.fill" catalog="system" width="128" height="121"/>
         <image name="man" width="600" height="600"/>
+        <image name="play.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

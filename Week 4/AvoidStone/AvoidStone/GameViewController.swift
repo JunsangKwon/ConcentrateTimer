@@ -15,6 +15,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var goRightButton: UIButton!
     @IBOutlet weak var manImageView: UIImageView!
     @IBOutlet weak var countDownLabel: UILabel!
+    @IBOutlet weak var gameOverView: UIView!
+    @IBOutlet weak var gameOverScoreLabel: UILabel!
+    @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var manConstraints: NSLayoutConstraint!
     
     var scoreTimer = Timer()
@@ -42,6 +45,8 @@ class GameViewController: UIViewController {
     
     // 게임 시작 전 세팅
     func setView() {
+        gameOverView.isHidden = true
+        gameOverView.alpha = 0.0
         presentScoreLabel.text = String(0)
         greatScoreLabel.text = String(highestScore)
         scoreTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(scoreTimerCounter), userInfo: nil, repeats: true)
@@ -83,7 +88,7 @@ class GameViewController: UIViewController {
                             UserDefaults.standard.setValue(self.presentScore, forKey: GameViewController.scoreKey)
                             self.highestScore = self.presentScore
                         }
-                        self.showAlert()
+                        self.setGameOverView()
                     }
                 }
             }
@@ -102,20 +107,22 @@ class GameViewController: UIViewController {
         }
     }
     
-    func showAlert() {
-        let alert = UIAlertController(title: "게임 오버!", message: "당신의 점수는 \(self.presentScore)", preferredStyle: .alert)
-            
-            let restartAction = UIAlertAction(title: "재시작", style: .default, handler: { _ in
-                self.greatScoreLabel.text = String(UserDefaults.standard.integer(forKey: GameViewController.scoreKey))
-                self.presentScore = 0
-                self.countDownTimer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(self.countDownTimerCounter), userInfo: nil, repeats: true)
-                self.countDownLabel.alpha = 1.0
-                self.count = 3
-                self.countDownLabel.text = "\(self.count)"
-            })
-            alert.addAction(restartAction)
-            present(alert, animated: true, completion: nil)
-        }
+    func setGameOverView() {
+        gameOverView.isHidden = false
+        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseIn, animations: { self.gameOverView.alpha = 1.0 }, completion: nil)
+        gameOverScoreLabel.text = "\(presentScore)"
+        restartButton.addTarget(self, action: #selector(restartGame), for: .touchUpInside)
+    }
+    
+    @objc func restartGame() {
+        greatScoreLabel.text = String(UserDefaults.standard.integer(forKey: GameViewController.scoreKey))
+        presentScore = 0
+        countDownTimer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(self.countDownTimerCounter), userInfo: nil, repeats: true)
+        countDownLabel.alpha = 1.0
+        count = 3
+        countDownLabel.text = "\(self.count)"
+        gameOverView.isHidden = true
+    }
 
     @objc func scoreTimerCounter() -> Void {
         presentScore += 1
