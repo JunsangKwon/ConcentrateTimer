@@ -1,0 +1,6 @@
+framework module Pods_WeatherOfSeoul {
+  umbrella header "Pods-WeatherOfSeoul-umbrella.h"
+
+  export *
+  module * { export * }
+}
