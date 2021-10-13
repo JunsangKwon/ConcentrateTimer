@@ -19,10 +19,10 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        weatherStatusLabel.text = ""
-        presentTempLabel.text = ""
-        maxTempLabel.text = ""
-        minTempLabel.text = ""
+        weatherStatusLabel.text = " "
+        presentTempLabel.text = " "
+        maxTempLabel.text = " "
+        minTempLabel.text = " "
         WeatherRequest().getWeatherData(self)
     }
 
