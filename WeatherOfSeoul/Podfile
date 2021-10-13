@@ -11,6 +11,8 @@ pod 'KakaoSDKCommon'
 pod 'KakaoSDKAuth'
 pod 'KakaoSDKUser'
 
+pod 'naveridlogin-sdk-ios'
+
   # Pods for WeatherOfSeoul
 
 end
