@@ -25,7 +25,35 @@ class WeatherRequest {
             
                 switch response.result {
                 case .success(let response):
-                    viewController.didSuccess(response)
+                    viewController.didWeatherAPISuccess(response)
+                case .failure(let error):
+                    viewController.didWeatherAPIFailure()
+                    print(error.localizedDescription)
+                }
+
+        }
+    }
+    
+    func getAirPollutionData(_ viewController: WeatherViewController) {
+        let url = "http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty"
+        let params: Parameters = [
+            "serviceKey": "LK9dzzD%2B%2F1hZq1vRVsA0Cy8CUTcZq9%2BzcgAv48NJJfmZS3WDZzQMCuxzYmm%2Bbuu4wKEO139LErounXszCYBSAA%3D%3D",
+            "returnType": "json",
+            "numOfRows": "1",
+            "pageNo": "1",
+            "stationName": "종로구",
+            "dataTerm": "DAILY",
+            "ver": "1.0"
+        ]
+        
+        AF.request(url,
+                   method: .get,
+                   parameters: params,
+                   headers: nil)
+            .responseDecodable(of: AirPollutionEntity.self) { response in
+                switch response.result {
+                case .success(let response):
+                    viewController.didAirPollutionAPISuccess(response)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }

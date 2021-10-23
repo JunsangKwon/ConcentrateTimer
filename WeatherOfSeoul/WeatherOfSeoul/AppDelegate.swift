@@ -12,7 +12,7 @@ import NaverThirdPartyLogin
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var airInfoList: [AirInfo] = []
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         KakaoSDKCommon.initSDK(appKey: "4f5e5aa2cc727eb182b467d9126288e8")

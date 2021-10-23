@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,46 +29,106 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4B-PG-XcR">
-                                <rect key="frame" x="45" y="625" width="300" height="45"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BY6-ab-JzM">
+                                <rect key="frame" x="45" y="700" width="300" height="45"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="naver" translatesAutoresizingMaskIntoConstraints="NO" id="KYy-q4-yrH">
+                                        <rect key="frame" x="24" y="2.6666666666666288" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="A48-g4-l4H"/>
+                                            <constraint firstAttribute="width" constant="40" id="r2c-LT-5YT"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login with Naver" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTn-g9-82B">
+                                        <rect key="frame" x="109" y="12" width="127" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.77242636679999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="783-nV-vdT"/>
-                                    <constraint firstAttribute="height" constant="45" id="k7W-cp-QfX"/>
+                                    <constraint firstItem="qTn-g9-82B" firstAttribute="centerY" secondItem="BY6-ab-JzM" secondAttribute="centerY" id="7dx-Ya-9gn"/>
+                                    <constraint firstItem="qTn-g9-82B" firstAttribute="leading" secondItem="KYy-q4-yrH" secondAttribute="trailing" constant="45" id="7tq-Zb-Zs1"/>
+                                    <constraint firstAttribute="height" constant="45" id="WYr-nE-ugT"/>
+                                    <constraint firstAttribute="width" constant="300" id="YXb-WI-XT7"/>
+                                    <constraint firstItem="KYy-q4-yrH" firstAttribute="leading" secondItem="BY6-ab-JzM" secondAttribute="leading" constant="24" id="d1u-0t-8BY"/>
+                                    <constraint firstItem="KYy-q4-yrH" firstAttribute="top" secondItem="BY6-ab-JzM" secondAttribute="top" constant="2.5" id="s2J-F5-9F9"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="kakao_login_large_wide"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="kakaoSignInButtonDidTap:" destination="hv3-oP-Ygz" eventType="touchUpInside" id="XZ6-zD-Ycq"/>
+                                    <outletCollection property="gestureRecognizers" destination="gHV-IZ-qn4" appends="YES" id="sAG-8X-JSB"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hN-hx-3Mt">
-                                <rect key="frame" x="45" y="684" width="300" height="60"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kko-yi-V1M">
+                                <rect key="frame" x="45" y="640" width="300" height="45"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kakaoicon" translatesAutoresizingMaskIntoConstraints="NO" id="oec-aB-Jo8">
+                                        <rect key="frame" x="30" y="7.6666666666666288" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="J31-WI-HiG"/>
+                                            <constraint firstAttribute="width" constant="30" id="ueY-cc-GV8"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login with Kakao" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vB-BB-3Aq">
+                                        <rect key="frame" x="110" y="12" width="129" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99947398899999995" green="0.90501946209999995" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="lLF-1s-BCc"/>
-                                    <constraint firstAttribute="height" constant="60" id="p25-lq-Jqd"/>
+                                    <constraint firstItem="oec-aB-Jo8" firstAttribute="top" secondItem="kko-yi-V1M" secondAttribute="top" constant="7.5" id="9hV-bb-IhA"/>
+                                    <constraint firstItem="5vB-BB-3Aq" firstAttribute="leading" secondItem="oec-aB-Jo8" secondAttribute="trailing" constant="50" id="Hcz-77-acz"/>
+                                    <constraint firstAttribute="height" constant="45" id="Qe1-cu-b1O"/>
+                                    <constraint firstItem="5vB-BB-3Aq" firstAttribute="centerY" secondItem="kko-yi-V1M" secondAttribute="centerY" id="Tge-aU-5E6"/>
+                                    <constraint firstItem="oec-aB-Jo8" firstAttribute="leading" secondItem="kko-yi-V1M" secondAttribute="leading" constant="30" id="XxK-vq-Ibh"/>
+                                    <constraint firstAttribute="width" constant="300" id="a20-we-LAh"/>
                                 </constraints>
-                                <state key="normal" image="btnG_official"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="naverSignInButtonDidTap:" destination="hv3-oP-Ygz" eventType="touchUpInside" id="CQq-4d-eCQ"/>
+                                    <outletCollection property="gestureRecognizers" destination="cJI-ng-PMh" appends="YES" id="4xU-MC-9Tb"/>
                                 </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="THR-rA-W0K"/>
                         <color key="backgroundColor" red="0.77839868645999966" green="0.92277881929856953" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Z0t-Ow-VLI" firstAttribute="top" secondItem="THR-rA-W0K" secondAttribute="top" constant="209" id="Cfa-Z3-fqv"/>
-                            <constraint firstItem="THR-rA-W0K" firstAttribute="bottom" secondItem="5hN-hx-3Mt" secondAttribute="bottom" constant="66" id="KJQ-Bc-jnG"/>
-                            <constraint firstItem="j4B-PG-XcR" firstAttribute="centerX" secondItem="THR-rA-W0K" secondAttribute="centerX" id="MNw-VN-p1n"/>
-                            <constraint firstItem="5hN-hx-3Mt" firstAttribute="centerX" secondItem="THR-rA-W0K" secondAttribute="centerX" id="Wa2-b4-2Pz"/>
                             <constraint firstItem="4pP-Ep-9Ke" firstAttribute="top" secondItem="Z0t-Ow-VLI" secondAttribute="bottom" constant="-9" id="Whx-oH-OJ6"/>
+                            <constraint firstItem="kko-yi-V1M" firstAttribute="centerX" secondItem="THR-rA-W0K" secondAttribute="centerX" id="WpK-8r-F5H"/>
                             <constraint firstItem="Z0t-Ow-VLI" firstAttribute="centerX" secondItem="THR-rA-W0K" secondAttribute="centerX" id="aEZ-hp-KEh"/>
+                            <constraint firstItem="BY6-ab-JzM" firstAttribute="centerX" secondItem="THR-rA-W0K" secondAttribute="centerX" id="aTL-V6-MBA"/>
+                            <constraint firstItem="THR-rA-W0K" firstAttribute="bottom" secondItem="BY6-ab-JzM" secondAttribute="bottom" constant="65" id="fuf-Vj-i0Q"/>
                             <constraint firstItem="4pP-Ep-9Ke" firstAttribute="centerX" secondItem="THR-rA-W0K" secondAttribute="centerX" id="hn8-rp-aPH"/>
-                            <constraint firstItem="5hN-hx-3Mt" firstAttribute="top" secondItem="j4B-PG-XcR" secondAttribute="bottom" constant="14" id="inX-ZM-Dyt"/>
+                            <constraint firstItem="BY6-ab-JzM" firstAttribute="top" secondItem="kko-yi-V1M" secondAttribute="bottom" constant="15" id="sqb-qx-V6P"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYm-Tg-7LL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="cJI-ng-PMh">
+                    <connections>
+                        <action selector="kakaoSignInButtonDidTap:" destination="hv3-oP-Ygz" id="d4r-pd-Gbg"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="gHV-IZ-qn4">
+                    <connections>
+                        <action selector="naverSignInButtonDidTap:" destination="hv3-oP-Ygz" id="Jgx-aa-G9S"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-365.21739130434787" y="124.55357142857142"/>
+            <point key="canvasLocation" x="-366.15384615384613" y="124.40758293838861"/>
         </scene>
         <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -144,6 +205,64 @@
                                     <constraint firstAttribute="trailing" secondItem="4Dq-W0-hBK" secondAttribute="trailing" constant="26" id="yoH-bj-HC6"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cFJ-gD-kX3">
+                                <rect key="frame" x="0.0" y="385" width="390" height="385"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QOD-8H-MIg">
+                                    <size key="itemSize" width="100" height="120"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AirInfoCell" id="g8b-al-LAY" customClass="AirInfoCell" customModule="WeatherOfSeoul" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="E2V-0u-Izr">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미세먼지" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0d-M0-CRM">
+                                                    <rect key="frame" x="24" y="13" width="52" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매우 나쁨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wi8-ri-M4W">
+                                                    <rect key="frame" x="9.6666666666666643" y="47" width="81" height="27"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 ppm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ym-Nj-o08">
+                                                    <rect key="frame" x="18.666666666666671" y="82" width="63" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4ym-Nj-o08" firstAttribute="top" secondItem="wi8-ri-M4W" secondAttribute="bottom" constant="8" symbolic="YES" id="ZHs-Xn-EWP"/>
+                                                <constraint firstItem="wi8-ri-M4W" firstAttribute="top" secondItem="s0d-M0-CRM" secondAttribute="bottom" constant="16" id="k8T-hf-cYo"/>
+                                                <constraint firstItem="s0d-M0-CRM" firstAttribute="centerX" secondItem="E2V-0u-Izr" secondAttribute="centerX" id="klV-OT-gQA"/>
+                                                <constraint firstItem="wi8-ri-M4W" firstAttribute="centerX" secondItem="E2V-0u-Izr" secondAttribute="centerX" id="pvj-kL-dFj"/>
+                                                <constraint firstItem="4ym-Nj-o08" firstAttribute="centerX" secondItem="E2V-0u-Izr" secondAttribute="centerX" id="sfS-B9-ZLg"/>
+                                                <constraint firstItem="s0d-M0-CRM" firstAttribute="top" secondItem="E2V-0u-Izr" secondAttribute="top" constant="13" id="xAx-5k-7nV"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="infoLabel" destination="4ym-Nj-o08" id="rUb-YC-rcG"/>
+                                            <outlet property="infoStatusLabel" destination="wi8-ri-M4W" id="4ji-ce-vdP"/>
+                                            <outlet property="infoTitleLabel" destination="s0d-M0-CRM" id="tzE-gW-mZc"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="qis-oo-Z9t"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ngI-yp-SdM"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -161,6 +280,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="cFJ-gD-kX3" id="lxK-0k-dHH"/>
                         <outlet property="maxTempLabel" destination="lbn-7h-geh" id="kfd-Ni-cZb"/>
                         <outlet property="minTempLabel" destination="4Dq-W0-hBK" id="z8e-SM-WhJ"/>
                         <outlet property="presentTempLabel" destination="IPZ-EA-a0z" id="zbh-wn-40h"/>
@@ -174,8 +294,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="btnG_official" width="306.66665649414062" height="66.666664123535156"/>
-        <image name="kakao_login_large_wide" width="200" height="30"/>
+        <image name="kakaoicon" width="217.33332824707031" height="200"/>
+        <image name="naver" width="97.666664123535156" height="97.333335876464844"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
