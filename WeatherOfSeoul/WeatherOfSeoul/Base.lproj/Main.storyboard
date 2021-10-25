@@ -206,52 +206,65 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cFJ-gD-kX3">
-                                <rect key="frame" x="0.0" y="385" width="390" height="385"/>
+                                <rect key="frame" x="50" y="385" width="300" height="385"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QOD-8H-MIg">
-                                    <size key="itemSize" width="100" height="120"/>
+                                    <size key="itemSize" width="80" height="110"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AirInfoCell" id="g8b-al-LAY" customClass="AirInfoCell" customModule="WeatherOfSeoul" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="110"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="E2V-0u-Izr">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미세먼지" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0d-M0-CRM">
-                                                    <rect key="frame" x="24" y="13" width="52" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매우 나쁨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wi8-ri-M4W">
-                                                    <rect key="frame" x="9.6666666666666643" y="47" width="81" height="27"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 ppm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ym-Nj-o08">
-                                                    <rect key="frame" x="18.666666666666671" y="82" width="63" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUY-cI-jBv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="110"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미세먼지" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0d-M0-CRM">
+                                                            <rect key="frame" x="14" y="13" width="52" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매우 나쁨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wi8-ri-M4W">
+                                                            <rect key="frame" x="-0.6666666666666643" y="47" width="81.333333333333314" height="27"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 ppm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ym-Nj-o08">
+                                                            <rect key="frame" x="12.000000000000004" y="86" width="56.333333333333343" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="wi8-ri-M4W" firstAttribute="centerX" secondItem="gUY-cI-jBv" secondAttribute="centerX" id="Cgz-AG-dHC"/>
+                                                        <constraint firstItem="s0d-M0-CRM" firstAttribute="top" secondItem="gUY-cI-jBv" secondAttribute="top" constant="13" id="DGE-QL-4wU"/>
+                                                        <constraint firstItem="s0d-M0-CRM" firstAttribute="centerX" secondItem="gUY-cI-jBv" secondAttribute="centerX" id="Lxd-td-05j"/>
+                                                        <constraint firstItem="4ym-Nj-o08" firstAttribute="top" secondItem="wi8-ri-M4W" secondAttribute="bottom" constant="12" id="nFr-y3-1mG"/>
+                                                        <constraint firstItem="4ym-Nj-o08" firstAttribute="centerX" secondItem="gUY-cI-jBv" secondAttribute="centerX" id="ozg-gT-ngW"/>
+                                                        <constraint firstItem="wi8-ri-M4W" firstAttribute="top" secondItem="s0d-M0-CRM" secondAttribute="bottom" constant="16" id="vpl-pV-fen"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4ym-Nj-o08" firstAttribute="top" secondItem="wi8-ri-M4W" secondAttribute="bottom" constant="8" symbolic="YES" id="ZHs-Xn-EWP"/>
-                                                <constraint firstItem="wi8-ri-M4W" firstAttribute="top" secondItem="s0d-M0-CRM" secondAttribute="bottom" constant="16" id="k8T-hf-cYo"/>
-                                                <constraint firstItem="s0d-M0-CRM" firstAttribute="centerX" secondItem="E2V-0u-Izr" secondAttribute="centerX" id="klV-OT-gQA"/>
-                                                <constraint firstItem="wi8-ri-M4W" firstAttribute="centerX" secondItem="E2V-0u-Izr" secondAttribute="centerX" id="pvj-kL-dFj"/>
-                                                <constraint firstItem="4ym-Nj-o08" firstAttribute="centerX" secondItem="E2V-0u-Izr" secondAttribute="centerX" id="sfS-B9-ZLg"/>
-                                                <constraint firstItem="s0d-M0-CRM" firstAttribute="top" secondItem="E2V-0u-Izr" secondAttribute="top" constant="13" id="xAx-5k-7nV"/>
+                                                <constraint firstAttribute="trailing" secondItem="gUY-cI-jBv" secondAttribute="trailing" id="GSF-UQ-ut4"/>
+                                                <constraint firstAttribute="bottom" secondItem="gUY-cI-jBv" secondAttribute="bottom" id="VWg-CQ-Wqn"/>
+                                                <constraint firstItem="gUY-cI-jBv" firstAttribute="leading" secondItem="E2V-0u-Izr" secondAttribute="leading" id="j9K-W9-CJJ"/>
+                                                <constraint firstItem="gUY-cI-jBv" firstAttribute="top" secondItem="E2V-0u-Izr" secondAttribute="top" id="uCg-Zl-FkM"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="infoContentView" destination="gUY-cI-jBv" id="0YT-gz-nfk"/>
                                             <outlet property="infoLabel" destination="4ym-Nj-o08" id="rUb-YC-rcG"/>
                                             <outlet property="infoStatusLabel" destination="wi8-ri-M4W" id="4ji-ce-vdP"/>
                                             <outlet property="infoTitleLabel" destination="s0d-M0-CRM" id="tzE-gW-mZc"/>

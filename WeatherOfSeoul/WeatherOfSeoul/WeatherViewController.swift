@@ -78,14 +78,20 @@ extension WeatherViewController: UICollectionViewDataSource, UICollectionViewDel
         let row = self.appDelegate.airInfoList[indexPath.item]
         cell.infoTitleLabel.text = cell.infoTitleList[indexPath.item]
         cell.infoStatusLabel.text = row.gradeToString
-        cell.infoLabel.text = row.value
+        if indexPath.item >= 0, indexPath.item < 2 {
+            cell.infoLabel.text = "\(row.value) ㎍/㎥"
+        } else {
+            cell.infoLabel.text = "\(row.value) ppm"
+        }
+        cell.infoContentView.backgroundColor = row.backgroundColor
+        cell.infoContentView.layer.cornerRadius = 8
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemspacing: CGFloat = 3
+        let itemspacing: CGFloat = 5
         let width: CGFloat = (collectionView.bounds.width/3)-itemspacing*3
-        let height: CGFloat = width + 20
+        let height: CGFloat = width + 30
         return CGSize(width: width, height: height)
     }
 }

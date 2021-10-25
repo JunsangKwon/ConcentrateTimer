@@ -9,6 +9,7 @@ import UIKit
 
 class AirInfoCell: UICollectionViewCell {
     
+    @IBOutlet weak var infoContentView: UIView!
     @IBOutlet weak var infoTitleLabel: UILabel!
     @IBOutlet weak var infoStatusLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
